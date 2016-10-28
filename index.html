@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<title>index</title>
-	<style type="text/css">
-		
-	</style>
-</head>
-<body>
-	<div class="wrapper">
-		<div class="main-box">
-			<div id="welcome">Welcome</div>
-		</div>
-	</div>
 
-	<script type="text/javascript">
-	</script>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/star.css">
+    <title>index</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="main-box">
+            <div id="welcome">Welcome</div>
+        </div>
+    </div>
+    <div class="star-box" id="star-night">
+    </div>
+    <script type="text/javascript">
+    var starNight = {
+        container: document.getElementById("star-night"),
+
+        init: function() {
+            starNight.setStars();
+        },
+
+        setStars: function() {
+            for (var i = 0; i < 50; i++) {
+                starNight.container.innerHTML += "<span class='star'></span>";
+            };
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", starNight.init);
+    </script>
 </body>
+
 </html>
