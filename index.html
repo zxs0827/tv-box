@@ -10,29 +10,38 @@
 </head>
 
 <body>
+    <div class="star-box" id="star-night"></div>
     <div class="wrapper">
         <div class="main-box">
             <div id="welcome">Welcome</div>
+            <div class="acs-btn-box">
+                <div class="acs-btn active" id="ch-btn">中文</div>
+                <div class="acs-btn" id="en-btn">English</div>
+            </div>
         </div>
     </div>
-    <div class="star-box" id="star-night">
-    </div>
+    <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/star.js"></script>
     <script type="text/javascript">
-    var starNight = {
-        container: document.getElementById("star-night"),
+    $(document).ready(function() {
+        $(".acs-btn ").hover(function() {
+            $(".acs-btn").removeClass("active");
+            $(this).addClass("active");
 
-        init: function() {
-            starNight.setStars();
-        },
+            $(".active").click(function(event) {
+                $(this).siblings().css("display", "none").end().addClass("access-anim");
+                $("#welcome").addClass("welcome-anim");
 
-        setStars: function() {
-            for (var i = 0; i < 50; i++) {
-                starNight.container.innerHTML += "<span class='star'></span>";
-            };
-        }
-    }
+                $(".main-box").animate({opacity: 0},2000);
 
-    document.addEventListener("DOMContentLoaded", starNight.init);
+                setTimeout(function(){
+                	location = "html/list.html";
+                },2000);
+            });
+        });
+
+
+    });
     </script>
 </body>
 
