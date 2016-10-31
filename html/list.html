@@ -2,12 +2,36 @@
 <html>
 
 <head>
-    <title></title>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/list.css">
+    <title>LIST</title>
 </head>
 
 <body>
-    <div class="wrapper"></div>
+    <div class="wrapper">
+        <div class="main-box">
+            <div class="ls-left"></div>
+            <div class="ls-item">
+                <ul class="ls-item-ul">
+                    <li class="ls-item-li active"><span>我的酒店</span><i></i></li>
+                    <li class="ls-item-li"><span>客房娱乐</span><i></i></li>
+                    <li class="ls-item-li"><span>酒店服务</span><i></i></li>
+                    <li class="ls-item-li"><span>旅行助手</span><i></i></li>
+                    <li class="ls-item-li"><span>更多设置</span><i></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".ls-item-li").hover(function() {
+            $(".ls-item-li").removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+    </script>
 </body>
 
 </html>
