@@ -1,3 +1,9 @@
+.main-box {
+    background: url("../img/4.png") no-repeat left top , url("../img/3.png") no-repeat right top ;
+    background-color: #101115;
+    background-size: auto 90% , auto 90%;
+}
+
 .main-box:after {
     content: "";
     position: absolute;
@@ -5,7 +11,7 @@
     height: 360px;
     top: 20px;
     border-radius: 5px;
-    box-shadow: 0 4px 10px #000;
+    box-shadow: 0 4px 10px 2px #000;
     background-color: #ffffff1a;
 }
 
@@ -53,24 +59,8 @@
     position: relative;
     margin: 0px 5px;
     opacity: 0.5;
+    color: #101115;
 }
-
-
-.access-button {
-    width: 200px;
-    height: 60px;
-    background-color: #CE1B42;
-    position: absolute;
-    bottom: -30px;
-    margin: auto;
-    left: 0;
-    right: 0;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px #000;
-    transform: perspective(10px) rotateX(0deg);
-    transition: rotateX 5s;
-}
-
 
 .access-anim {
     transform: perspective(10px) rotateX(2deg);
@@ -79,7 +69,7 @@
 }
 
 .active {
-    color: #fff;
+    color: #EAC784;
     opacity: 1;
     cursor: pointer;
 }
@@ -92,7 +82,7 @@
     right: 0;
     content: '';
     z-index: 1;
-    box-shadow: inset 0 0 0 3px #fff;
+    box-shadow: inset 0 0 0 3px #EAC784;
     animation: clip-anim 1s linear infinite;
 }
 

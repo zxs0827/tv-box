@@ -9,11 +9,16 @@ body {
     font-family: "miscrosoft";
     background: #1e1e21;
     overflow: hidden;
+    color: #fff;
 }
 
 ::-moz-selection {
     color: inherit;
     background: inherit;
+}
+
+ul {
+    list-style: none;
 }
 
 .wrapper {
@@ -49,4 +54,9 @@ body {
 /*二级黑色*/
 .bk-s-color {
     background-color: #ffffff1a;
+}
+
+/*字体颜色*/
+.font-color {
+    color: #EAC784;
 }

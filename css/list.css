@@ -1,4 +1,4 @@
-.main-box {
+.ls-item {
     opacity: 0;
     animation: ls-main-anim 2s ease forwards;
 }
@@ -22,7 +22,7 @@
     box-shadow: 0 4px 10px #000;
     z-index: -1;
     opacity: 0;
-    animation: ls-left-anim 1s ease 2s forwards;
+    animation: ls-left-anim 1s linear 0.2s forwards;
 }
 
 @keyframes ls-left-anim {
@@ -50,7 +50,7 @@
 }
 
 .ls-item-li {
-    background: linear-gradient( #fff0, #ffffff1a), url("../img/3.png") bottom center;
+    background: linear-gradient( #fff0, #ffffff1a), url("../img/2.png") bottom center;
     display: block;
     width: 20%;
     float: left;
@@ -91,7 +91,7 @@
     transform: perspective(500px) rotateY(-2deg);
     outline: 5px solid transparent;
     transition: transform 0.3s;
-    background: linear-gradient( #fff0, #ffffff1a), url("../img/2.png") bottom center;
+    background: linear-gradient( #fff0, #ffffff1a), url("../img/1.png") bottom center;
     background-position: bottom center;
     background-repeat: no-repeat;
     background-size: auto auto, 120% auto;
