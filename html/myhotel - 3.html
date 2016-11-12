@@ -33,12 +33,7 @@
                             </p>
                         </li>
                     </ul>
-                    <ol class="ht-r-ol">
-                        <!-- 预留结构 动态生成
-                        <li class="active"></li>
-                        <li></li>
-                         -->
-                    </ol>
+                    <ol class="ht-r-ol"></ol>
                 </div>
                 <div class="ht-right-item">
                     <ul class="ht-r-ul">
@@ -62,53 +57,122 @@
                             </p>
                         </li>
                     </ul>
-                    <ol class="ht-r-ol">
-                    </ol>
+                    <ol class="ht-r-ol"></ol>
                 </div>
             </div>
         </div>
         <script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
         <script type="text/javascript">
         $(document).ready(function() {
-            var obj = {
-                "init": function() {
-                    $(".ht-l-li").eq(0).addClass('active');
-                    this.addActive(0);
-                },
-                "addActive": function(index) {
-                    $(".ht-right-item").eq(index).addClass("active").find(".ht-r-li").eq(0).addClass("active");
-                    this.btActive(index);
-                    this.changePage(index);
-                },
-                "btActive": function(index) {
-                    $(".ht-right-item").eq(index).find(".ht-r-ol").html("");
-                    for (var i = 0; i < $(".ht-right-item").eq(index).find(".ht-r-li").length; i++) {
-                        $("<li></li>").appendTo($(".ht-right-item").eq(index).find(".ht-r-ol"));
-                        $($(".ht-right-item").eq(index).find(".ht-r-ol")).find("li").eq(0).addClass("active");
-                    };
-                },
-                "changePage": function(index) {
-                    $(".ht-right-item").eq(index).siblings().find(".ht-r-li").removeClass("active");
-                    $($(".ht-right-item").eq(index).find(".ht-r-ol")).find("li").on("click", function() {
-                        $($(".ht-right-item").eq(index).find(".ht-r-ol")).find("li").removeClass("active");
-                        $(this).addClass("active");
-                        var pageIndex = $(this).index();
-                        $(".ht-right-item").eq(index).find(".ht-r-li").removeClass("active");
-                        $(".ht-right-item").eq(index).find(".ht-r-li").eq(pageIndex).addClass("active");
-                    });
-                }
+            var Hotel = function() {
+                this.index1 = 0;
+                this.index2 = 0;
 
+                this.ht_l_li = $(".ht-l-li");
+                this.ht_right_item = $(".ht-right-item");
+                this.ht_r_li = null;
+                this.ht_r_ol = null;
+                this.ht_r_ol_li = null;
             };
 
-            obj.init();
+            Hotel.prototype.init = function() {
+                this.ht_r_li = this.ht_right_item.eq(this.index1).find(".ht-r-li");
+                this.ht_r_ol = this.ht_right_item.eq(this.index1).find(".ht-r-ol");
+
+                this.ht_l_li.removeClass("active");
+                this.ht_l_li.eq(this.index1).addClass("active");
+
+                this.ht_right_item.removeClass("active");
+                this.ht_right_item.eq(this.index1).addClass("active");
+
+                this.ht_r_li.removeClass("active");
+                this.ht_r_li.eq(this.index2).addClass("active");
+
+                this.point();
+                
+                this.ht_r_ol_li = this.ht_r_ol.find("li");
+                this.ht_r_ol_li.eq(this.index2).addClass("active");
+            };
+
+            Hotel.prototype.point = function() {
+                var len = this.ht_r_li.length;
+
+                var str = "";
+                for (var i = 0; i < len; i++) {
+                    str += "<li></li>";
+                }
+
+                this.ht_r_ol.html(str);
+            };
+
+            Hotel.prototype.moveLeft = function(thisT) {
+                this.index1 = thisT.index();
+
+                this.index2 = 0;
+
+                this.init();
+            };
+
+            Hotel.prototype.movePoint = function(thisT) {
+                this.index2 = thisT.index();
+
+                this.init();
+            };
+
+            var hotel = new Hotel();
+            hotel.init();
+
             $(".ht-l-li").on("click", function() {
-                $(".ht-l-li").removeClass("active");
-                $(".ht-r-li").removeClass("active");
-                $(this).addClass("active");
-                var indexN = $(".ht-l-li.active").index();
-                $(".ht-right-item").removeClass("active");
-                obj.addActive(indexN);
+                hotel.moveLeft($(this));
             });
+
+            $(".ht-r-ol").on("click", "li", function() {
+                hotel.movePoint($(this));
+            });
+
+            //     var activeObj = {
+            //         leftItem: $(".ht-l-li"),
+            //         rightBox: $(".ht-right-item"),
+            //         // index : function() {
+            //         //     var index = $(".ht-l-li.active").index();
+            //         //     return index;
+            //         // },
+
+            //         rightItem: function() {
+
+            //         },
+
+            //         addActive: function() {
+            //             activeObj.leftItem.on("click", function() {
+            //                 activeObj.leftItem.removeClass("active");
+            //                 $(this).addClass("active");
+
+            //                 var index = $(".ht-l-li.active").index();
+
+            //                 activeObj.rightBox.removeClass("active");
+            //                 activeObj.rightBox.eq(index).addClass("active");
+
+
+            //             });
+            //         },
+
+
+            //         init: function() {
+            //             activeObj.leftItem.eq(0).addClass("active");
+            //             activeObj.addActive();
+
+            //         }
+
+            //     };
+
+            //     activeObj.init(0);
+
+            //     // var leftItem = $(".ht-l-li");
+            //     // var rightBox = $(".ht-right-item");
+
+            //     // (function init() {
+            //     //     leftItem.eq(0).addClass("active");
+            //     // })();
         });
         </script>
 </body>
