@@ -1,6 +1,13 @@
 .ls-item {
     opacity: 0;
-    animation: ls-main-anim 2s ease forwards;
+    -webkit-animation: ls-main-anim 2s ease forwards;
+            animation: ls-main-anim 2s ease forwards;
+}
+
+@-webkit-keyframes ls-main-anim {
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes ls-main-anim {
@@ -19,10 +26,18 @@
     left: -20px;
     top: 10px;
     border-radius: 5px;
-    box-shadow: 0 4px 10px #000;
+    -webkit-box-shadow: 0 4px 10px #000;
+            box-shadow: 0 4px 10px #000;
     z-index: -1;
     opacity: 0;
-    animation: ls-left-anim 1s linear 0.2s forwards;
+    -webkit-animation: ls-left-anim 1s linear 0.2s forwards;
+            animation: ls-left-anim 1s linear 0.2s forwards;
+}
+
+@-webkit-keyframes ls-left-anim {
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes ls-left-anim {
@@ -50,6 +65,7 @@
 }
 
 .ls-item-li {
+    background: -webkit-gradient( linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.05))), url("../img/2.png") bottom center;
     background: linear-gradient( #fff0, #ffffff1a), url("../img/2.png") bottom center;
     display: block;
     width: 20%;
@@ -88,13 +104,19 @@
 }
 
 .active {
-    transform: perspective(500px) rotateY(-2deg);
+    -webkit-transform: perspective(500px) rotateY(-2deg);
+            transform: perspective(500px) rotateY(-2deg);
     outline: 5px solid transparent;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    background: -webkit-gradient( linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.05))), url("../img/1.png") bottom center;
     background: linear-gradient( #fff0, #ffffff1a), url("../img/1.png") bottom center;
     background-position: bottom center;
     background-repeat: no-repeat;
     background-size: auto auto, 120% auto;
+    cursor: pointer;
 }
 
 .active > span {
